@@ -7,6 +7,31 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* 公共复合类 - 方便统一维护 */
+@utility nav-link {
+  @apply border-b-4 border-transparent px-2 py-4 text-slate-900 no-underline transition-colors hover:border-blue-600;
+}
+
+@utility social-link-header {
+  @apply flex p-2 text-slate-700 transition-colors hover:text-slate-900;
+}
+
+@utility social-link-footer {
+  @apply text-slate-500 no-underline transition-colors hover:text-slate-700;
+}
+
+@utility card-hover {
+  @apply transition-shadow duration-200 hover:shadow-lg;
+}
+
+@utility text-muted {
+  @apply text-slate-500;
+}
+
+@utility text-hover-primary {
+  @apply transition-colors hover:text-blue-600;
+}
+
 :root {
   --accent: #2337ff;
   --accent-dark: #000d8a;
