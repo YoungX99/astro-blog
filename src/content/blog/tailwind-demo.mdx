@@ -1,93 +1,111 @@
 ---
-title: 'Tailwind CSS Demo'
-description: '展示如何在 Astro 博客中使用 Tailwind CSS'
-pubDate: 'Dec 10 2024'
-heroImage: '../../assets/blog-placeholder-3.jpg'
+title: "Tailwind CSS Demo"
+description: "展示如何在 Astro 博客中使用 Tailwind CSS"
+pubDate: "Dec 10 2024"
+heroImage: "../../assets/blog-placeholder-3.jpg"
 ---
 
 这篇文章展示了如何在 Astro 博客中使用 Tailwind CSS 来快速构建美观的 UI 组件。
 
 ## 卡片组件示例
 
-<div class="bg-linear-to-r from-purple-500 to-pink-500 rounded-2xl p-6 shadow-xl text-white my-8">
-	<h3 class="text-2xl font-bold mb-2">🎨 渐变卡片</h3>
-	<p class="opacity-90">这是一个使用 Tailwind 渐变背景和阴影效果的卡片组件。</p>
+<div class="my-8 rounded-2xl bg-linear-to-r from-purple-500 to-pink-500 p-6 text-white shadow-xl">
+  <h3 class="mb-2 text-2xl font-bold">🎨 渐变卡片</h3>
+  <p class="opacity-90">这是一个使用 Tailwind 渐变背景和阴影效果的卡片组件。</p>
 </div>
 
 ## 按钮样式
 
-<div class="flex flex-wrap gap-4 my-8">
-	<button class="bg-blue-600 hover:bg-blue-700 text-white font-semibold py-2 px-6 rounded-lg transition-colors duration-200">
-		主要按钮
-	</button>
-	<button class="bg-transparent border-2 border-emerald-500 text-emerald-600 hover:bg-emerald-500 hover:text-white font-semibold py-2 px-6 rounded-lg transition-all duration-200">
-		次要按钮
-	</button>
-	<button class="bg-linear-to-r from-amber-500 to-orange-500 hover:from-amber-600 hover:to-orange-600 text-white font-semibold py-2 px-6 rounded-full shadow-lg transition-all duration-200">
-		渐变按钮
-	</button>
+<div class="my-8 flex flex-wrap gap-4">
+  <button class="rounded-lg bg-blue-600 px-6 py-2 font-semibold text-white transition-colors duration-200 hover:bg-blue-700">
+    主要按钮
+  </button>
+  <button class="rounded-lg border-2 border-emerald-500 bg-transparent px-6 py-2 font-semibold text-emerald-600 transition-all duration-200 hover:bg-emerald-500 hover:text-white">
+    次要按钮
+  </button>
+  <button class="rounded-full bg-linear-to-r from-amber-500 to-orange-500 px-6 py-2 font-semibold text-white shadow-lg transition-all duration-200 hover:from-amber-600 hover:to-orange-600">
+    渐变按钮
+  </button>
 </div>
 
 ## 信息提示框
 
-<div class="bg-sky-50 border-l-4 border-sky-500 p-4 rounded-r-lg my-8">
-	<div class="flex items-center">
-		<span class="text-sky-500 text-xl mr-3">ℹ️</span>
-		<div>
-			<p class="font-semibold text-sky-800">提示信息</p>
-			<p class="text-sky-700 text-sm">这是一个使用 Tailwind 样式的信息提示框。</p>
-		</div>
-	</div>
+<div class="my-8 rounded-r-lg border-l-4 border-sky-500 bg-sky-50 p-4">
+  <div class="flex items-center">
+    <span class="mr-3 text-xl text-sky-500">ℹ️</span>
+    <div>
+      <p class="font-semibold text-sky-800">提示信息</p>
+      <p class="text-sm text-sky-700">
+        这是一个使用 Tailwind 样式的信息提示框。
+      </p>
+    </div>
+  </div>
 </div>
 
-<div class="bg-amber-50 border-l-4 border-amber-500 p-4 rounded-r-lg my-8">
-	<div class="flex items-center">
-		<span class="text-amber-500 text-xl mr-3">⚠️</span>
-		<div>
-			<p class="font-semibold text-amber-800">警告信息</p>
-			<p class="text-amber-700 text-sm">请注意这个重要的警告提示。</p>
-		</div>
-	</div>
+<div class="my-8 rounded-r-lg border-l-4 border-amber-500 bg-amber-50 p-4">
+  <div class="flex items-center">
+    <span class="mr-3 text-xl text-amber-500">⚠️</span>
+    <div>
+      <p class="font-semibold text-amber-800">警告信息</p>
+      <p class="text-sm text-amber-700">请注意这个重要的警告提示。</p>
+    </div>
+  </div>
 </div>
 
-<div class="bg-emerald-50 border-l-4 border-emerald-500 p-4 rounded-r-lg my-8">
-	<div class="flex items-center">
-		<span class="text-emerald-500 text-xl mr-3">✅</span>
-		<div>
-			<p class="font-semibold text-emerald-800">成功信息</p>
-			<p class="text-emerald-700 text-sm">操作已成功完成！</p>
-		</div>
-	</div>
+<div class="my-8 rounded-r-lg border-l-4 border-emerald-500 bg-emerald-50 p-4">
+  <div class="flex items-center">
+    <span class="mr-3 text-xl text-emerald-500">✅</span>
+    <div>
+      <p class="font-semibold text-emerald-800">成功信息</p>
+      <p class="text-sm text-emerald-700">操作已成功完成！</p>
+    </div>
+  </div>
 </div>
 
 ## 响应式网格布局
 
-<div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 my-8">
-	<div class="bg-slate-100 rounded-xl p-4 hover:shadow-md transition-shadow">
-		<div class="w-10 h-10 bg-indigo-500 rounded-lg flex items-center justify-center text-white text-xl mb-3">🚀</div>
-		<h4 class="font-bold text-slate-800">快速开发</h4>
-		<p class="text-slate-600 text-sm">使用 Tailwind 可以快速构建 UI</p>
-	</div>
-	<div class="bg-slate-100 rounded-xl p-4 hover:shadow-md transition-shadow">
-		<div class="w-10 h-10 bg-rose-500 rounded-lg flex items-center justify-center text-white text-xl mb-3">🎯</div>
-		<h4 class="font-bold text-slate-800">精确控制</h4>
-		<p class="text-slate-600 text-sm">原子化类提供精细的样式控制</p>
-	</div>
-	<div class="bg-slate-100 rounded-xl p-4 hover:shadow-md transition-shadow">
-		<div class="w-10 h-10 bg-cyan-500 rounded-lg flex items-center justify-center text-white text-xl mb-3">📱</div>
-		<h4 class="font-bold text-slate-800">响应式设计</h4>
-		<p class="text-slate-600 text-sm">内置响应式断点支持</p>
-	</div>
+<div class="my-8 grid grid-cols-1 gap-4 md:grid-cols-2 lg:grid-cols-3">
+  <div class="rounded-xl bg-slate-100 p-4 transition-shadow hover:shadow-md">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-indigo-500 text-xl text-white">
+      🚀
+    </div>
+    <h4 class="font-bold text-slate-800">快速开发</h4>
+    <p class="text-sm text-slate-600">使用 Tailwind 可以快速构建 UI</p>
+  </div>
+  <div class="rounded-xl bg-slate-100 p-4 transition-shadow hover:shadow-md">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-rose-500 text-xl text-white">
+      🎯
+    </div>
+    <h4 class="font-bold text-slate-800">精确控制</h4>
+    <p class="text-sm text-slate-600">原子化类提供精细的样式控制</p>
+  </div>
+  <div class="rounded-xl bg-slate-100 p-4 transition-shadow hover:shadow-md">
+    <div class="mb-3 flex h-10 w-10 items-center justify-center rounded-lg bg-cyan-500 text-xl text-white">
+      📱
+    </div>
+    <h4 class="font-bold text-slate-800">响应式设计</h4>
+    <p class="text-sm text-slate-600">内置响应式断点支持</p>
+  </div>
 </div>
 
 ## 标签组件
 
-<div class="flex flex-wrap gap-2 my-8">
-	<span class="bg-violet-100 text-violet-800 text-xs font-medium px-3 py-1 rounded-full">Astro</span>
-	<span class="bg-cyan-100 text-cyan-800 text-xs font-medium px-3 py-1 rounded-full">Tailwind CSS</span>
-	<span class="bg-amber-100 text-amber-800 text-xs font-medium px-3 py-1 rounded-full">MDX</span>
-	<span class="bg-emerald-100 text-emerald-800 text-xs font-medium px-3 py-1 rounded-full">TypeScript</span>
-	<span class="bg-rose-100 text-rose-800 text-xs font-medium px-3 py-1 rounded-full">Vite</span>
+<div class="my-8 flex flex-wrap gap-2">
+  <span class="rounded-full bg-violet-100 px-3 py-1 text-xs font-medium text-violet-800">
+    Astro
+  </span>
+  <span class="rounded-full bg-cyan-100 px-3 py-1 text-xs font-medium text-cyan-800">
+    Tailwind CSS
+  </span>
+  <span class="rounded-full bg-amber-100 px-3 py-1 text-xs font-medium text-amber-800">
+    MDX
+  </span>
+  <span class="rounded-full bg-emerald-100 px-3 py-1 text-xs font-medium text-emerald-800">
+    TypeScript
+  </span>
+  <span class="rounded-full bg-rose-100 px-3 py-1 text-xs font-medium text-rose-800">
+    Vite
+  </span>
 </div>
 
 ## 代码说明
@@ -99,4 +117,3 @@ heroImage: '../../assets/blog-placeholder-3.jpg'
 3. 在全局 CSS 文件中导入 `@import "tailwindcss"`
 
 完成后，你就可以在 `.astro`、`.mdx` 文件中使用 Tailwind 的所有工具类了！
-
