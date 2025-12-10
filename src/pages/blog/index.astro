@@ -43,7 +43,7 @@ const posts = (await getCollection("blog")).sort(
                       src={post.data.heroImage}
                       alt=""
                       class:list={[
-                        "mb-2 rounded-xl transition-shadow duration-200 group-hover:shadow-lg",
+                        "mb-2 rounded-xl card-hover",
                         { "w-full": index === 0 },
                       ]}
                     />
@@ -58,7 +58,7 @@ const posts = (await getCollection("blog")).sort(
                   >
                     {post.data.title}
                   </h4>
-                  <p class="m-0 text-slate-500 group-hover:text-blue-600 transition-colors">
+                  <p class="m-0 text-muted text-hover-primary group-hover:text-blue-600">
                     <FormattedDate date={post.data.pubDate} />
                   </p>
                 </a>
