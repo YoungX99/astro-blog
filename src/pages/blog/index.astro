@@ -46,6 +46,7 @@ const posts = (await getCollection("blog")).sort(
                         "mb-2 rounded-xl card-hover",
                         { "w-full": index === 0 },
                       ]}
+                      transition:name={`hero-${post.id}`}
                     />
                   )}
                   <h4
