@@ -23,14 +23,16 @@ const { title, description, pubDate, updatedDate, heroImage, id } = Astro.props;
         <div class="w-full">
           {
             heroImage && (
-              <Image
-                width={1020}
-                height={510}
-                src={heroImage}
-                alt=""
-                class="mx-auto block rounded-xl shadow-lg card-hover"
-                transition:name={`hero-${id}`}
-              />
+              <div class="group mx-auto max-w-4xl img-container">
+                <Image
+                  width={1020}
+                  height={510}
+                  src={heroImage}
+                  alt=""
+                  class="block img-zoom group-hover:scale-105"
+                  transition:name={`hero-${id}`}
+                />
+              </div>
             )
           }
         </div>

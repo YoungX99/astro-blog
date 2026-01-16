@@ -37,17 +37,21 @@ const posts = (await getCollection("blog")).sort(
                   class="block no-underline transition-all duration-200 group"
                 >
                   {post.data.heroImage && (
-                    <Image
-                      width={720}
-                      height={360}
-                      src={post.data.heroImage}
-                      alt=""
+                    <div
                       class:list={[
-                        "mb-2 rounded-xl card-hover",
+                        "mb-2 img-container",
                         { "w-full": index === 0 },
                       ]}
-                      transition:name={`hero-${post.id}`}
-                    />
+                    >
+                      <Image
+                        width={720}
+                        height={360}
+                        src={post.data.heroImage}
+                        alt=""
+                        class="img-zoom group-hover:scale-105"
+                        transition:name={`hero-${post.id}`}
+                      />
+                    </div>
                   )}
                   <h4
                     class:list={[

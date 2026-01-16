@@ -20,8 +20,12 @@
   @apply text-slate-500 no-underline transition-colors hover:text-slate-700;
 }
 
-@utility card-hover {
-  @apply transition-shadow duration-200 hover:shadow-lg;
+@utility img-container {
+  @apply overflow-hidden rounded-xl shadow-lg transition-shadow duration-300 ease-out hover:shadow-xl;
+}
+
+@utility img-zoom {
+  @apply transition-transform duration-300 ease-out;
 }
 
 @utility text-muted {
