@@ -1,5 +1,5 @@
 ---
-import { SITE_TITLE } from "../consts";
+import { ENABLE_DARK_MODE, SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import SocialLink from "./SocialLink.astro";
 import ThemeToggle from "./ThemeToggle.astro";
@@ -36,7 +36,7 @@ import ThemeToggle from "./ThemeToggle.astro";
           variant="header"
         />
       </div>
-      <ThemeToggle />
+      {ENABLE_DARK_MODE && <ThemeToggle />}
     </div>
   </nav>
 </header>
