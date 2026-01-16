@@ -21,6 +21,23 @@ const { title, description, image = FallbackImage } = Astro.props;
 <!-- View Transitions -->
 <ClientRouter />
 
+<!-- Theme initialization (prevent FOUC) -->
+<script is:inline>
+  (function() {
+    function applyTheme() {
+      const theme = localStorage.getItem('theme') ??
+        (matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
+      document.documentElement.classList.toggle('dark', theme === 'dark');
+    }
+    // Apply immediately to prevent FOUC
+    applyTheme();
+    // Re-apply after View Transitions swap
+    document.addEventListener('astro:after-swap', applyTheme);
+    // Also listen for page load (covers initial + transitions)
+    document.addEventListener('astro:page-load', applyTheme);
+  })();
+</script>
+
 <!-- Global Metadata -->
 <meta charset="utf-8" />
 <meta name="viewport" content="width=device-width,initial-scale=1" />

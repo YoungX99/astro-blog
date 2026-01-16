@@ -57,8 +57,8 @@ const posts = (await getCollection("blog")).sort(
                     class:list={[
                       "m-0 leading-none transition-colors",
                       index === 0
-                        ? "text-4xl max-md:text-2xl text-blue-600 group-hover:text-blue-700"
-                        : "text-xl text-slate-900 group-hover:text-blue-600",
+                        ? "text-4xl max-md:text-2xl text-blue-600 group-hover:text-blue-700 dark:text-blue-400 dark:group-hover:text-blue-300"
+                        : "text-xl text-slate-900 group-hover:text-blue-600 dark:text-slate-100 dark:group-hover:text-blue-400",
                     ]}
                   >
                     {post.data.title}

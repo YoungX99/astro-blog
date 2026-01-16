@@ -2,37 +2,41 @@
 import { SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 import SocialLink from "./SocialLink.astro";
+import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="m-0 bg-white px-4 shadow-sm">
+<header class="m-0 bg-white px-4 shadow-sm dark:bg-slate-900 dark:shadow-slate-800/50">
   <nav class="flex items-center justify-between">
     <h2 class="m-0 text-base">
-      <a href="/" class="no-underline text-slate-900">{SITE_TITLE}</a>
+      <a href="/" class="no-underline text-slate-900 dark:text-slate-100">{SITE_TITLE}</a>
     </h2>
     <div class="flex">
       <HeaderLink href="/" class="nav-link">Home</HeaderLink>
       <HeaderLink href="/blog" class="nav-link">Blog</HeaderLink>
       <HeaderLink href="/about" class="nav-link">About</HeaderLink>
     </div>
-    <div class="hidden md:flex">
-      <SocialLink
-        href="https://m.webtoo.ls/@astro"
-        label="Follow Astro on Mastodon"
-        icon="mastodon"
-        variant="header"
-      />
-      <SocialLink
-        href="https://twitter.com/astrodotbuild"
-        label="Follow Astro on Twitter"
-        icon="twitter"
-        variant="header"
-      />
-      <SocialLink
-        href="https://github.com/withastro/astro"
-        label="Go to Astro's GitHub repo"
-        icon="github"
-        variant="header"
-      />
+    <div class="flex items-center gap-1">
+      <div class="hidden md:flex">
+        <SocialLink
+          href="https://m.webtoo.ls/@astro"
+          label="Follow Astro on Mastodon"
+          icon="mastodon"
+          variant="header"
+        />
+        <SocialLink
+          href="https://twitter.com/astrodotbuild"
+          label="Follow Astro on Twitter"
+          icon="twitter"
+          variant="header"
+        />
+        <SocialLink
+          href="https://github.com/withastro/astro"
+          label="Go to Astro's GitHub repo"
+          icon="github"
+          variant="header"
+        />
+      </div>
+      <ThemeToggle />
     </div>
   </nav>
 </header>

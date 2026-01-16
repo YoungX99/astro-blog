@@ -7,21 +7,24 @@
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
+/* Tailwind 4 dark mode 配置 - 使用 class 策略 */
+@custom-variant dark (&:where(.dark, .dark *));
+
 /* 公共复合类 - 方便统一维护 */
 @utility nav-link {
-  @apply border-b-4 border-transparent px-2 py-4 text-slate-900 no-underline transition-colors hover:border-blue-600;
+  @apply border-b-4 border-transparent px-2 py-4 text-slate-900 no-underline transition-colors hover:border-blue-600 dark:text-slate-100 dark:hover:border-blue-400;
 }
 
 @utility social-link-header {
-  @apply flex p-2 text-slate-700 transition-colors hover:text-slate-900;
+  @apply flex p-2 text-slate-700 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
 }
 
 @utility social-link-footer {
-  @apply text-slate-500 no-underline transition-colors hover:text-slate-700;
+  @apply text-slate-500 no-underline transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200;
 }
 
 @utility img-container {
-  @apply overflow-hidden rounded-xl shadow-lg transition-shadow duration-300 ease-out hover:shadow-xl;
+  @apply overflow-hidden rounded-xl shadow-lg transition-shadow duration-300 ease-out hover:shadow-xl dark:shadow-slate-900/50;
 }
 
 @utility img-zoom {
@@ -29,11 +32,11 @@
 }
 
 @utility text-muted {
-  @apply text-slate-500;
+  @apply text-slate-500 dark:text-slate-400;
 }
 
 @utility text-hover-primary {
-  @apply transition-colors hover:text-blue-600;
+  @apply transition-colors hover:text-blue-600 dark:hover:text-blue-400;
 }
 
 :root {
@@ -74,6 +77,15 @@ body {
   color: rgb(var(--gray-dark));
   font-size: 20px;
   line-height: 1.7;
+  transition:
+    background-color 0.2s ease,
+    color 0.2s ease;
+}
+
+/* 深色模式 body 样式 */
+.dark body {
+  background: #0f172a;
+  color: #e2e8f0;
 }
 main {
   width: 720px;
