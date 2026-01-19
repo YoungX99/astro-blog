@@ -28,7 +28,14 @@
 }
 
 @utility img-zoom {
-  @apply transition-transform duration-300 ease-out;
+  @apply rounded-xl transition-transform duration-300 ease-out;
+}
+
+/* View Transitions 期间保持图片圆角 */
+::view-transition-old(hero-*),
+::view-transition-new(hero-*) {
+  border-radius: 0.75rem; /* rounded-xl */
+  overflow: hidden;
 }
 
 @utility text-muted {
