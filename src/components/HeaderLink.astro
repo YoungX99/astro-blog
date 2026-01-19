@@ -14,8 +14,9 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
   class:list={[
     "inline-block no-underline",
     className,
-    { "font-bold underline": isActive },
+    { "font-bold underline pointer-events-none": isActive },
   ]}
+  aria-current={isActive ? "page" : undefined}
   {...props}
 >
   <slot />
