@@ -5,10 +5,14 @@ import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import FormattedDate from "../components/FormattedDate.astro";
 import Header from "../components/Header.astro";
+import TableOfContents, { type TocHeading } from "../components/TableOfContents.astro";
 
-type Props = CollectionEntry<"blog">["data"] & { id?: string };
+type Props = CollectionEntry<"blog">["data"] & {
+  id?: string;
+  headings?: TocHeading[];
+};
 
-const { title, description, pubDate, updatedDate, heroImage, id } = Astro.props;
+const { title, description, pubDate, updatedDate, heroImage, id, toc, headings = [] } = Astro.props;
 ---
 
 <html lang="en">
@@ -18,6 +22,7 @@ const { title, description, pubDate, updatedDate, heroImage, id } = Astro.props;
 
   <body>
     <Header />
+    {toc && headings.length > 0 && <TableOfContents headings={headings} />}
     <main class="m-0 w-[calc(100%-2em)] max-w-full">
       <article>
         <div class="w-full">
