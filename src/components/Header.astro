@@ -1,42 +1,112 @@
 ---
-import { ENABLE_DARK_MODE, SITE_TITLE } from "../consts";
+import { SITE_NAV_ITEMS, SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
-import SocialLink from "./SocialLink.astro";
-import ThemeToggle from "./ThemeToggle.astro";
 ---
 
-<header class="m-0 bg-white px-4 shadow-sm dark:bg-slate-900 dark:shadow-slate-800/50">
-  <nav class="flex items-center justify-between">
-    <h2 class="m-0 text-base">
-      <a href="/" class="no-underline text-slate-900 dark:text-slate-100">{SITE_TITLE}</a>
-    </h2>
-    <div class="flex">
-      <HeaderLink href="/" class="nav-link">Home</HeaderLink>
-      <HeaderLink href="/blog" class="nav-link">Blog</HeaderLink>
-      <HeaderLink href="/about" class="nav-link">About</HeaderLink>
-    </div>
-    <div class="flex items-center gap-1">
-      <div class="hidden md:flex">
-        <SocialLink
-          href="https://m.webtoo.ls/@astro"
-          label="Follow Astro on Mastodon"
-          icon="mastodon"
-          variant="header"
-        />
-        <SocialLink
-          href="https://twitter.com/astrodotbuild"
-          label="Follow Astro on Twitter"
-          icon="twitter"
-          variant="header"
-        />
-        <SocialLink
-          href="https://github.com/withastro/astro"
-          label="Go to Astro's GitHub repo"
-          icon="github"
-          variant="header"
-        />
+<header data-site-header class="relative z-50 px-4 pt-4 sm:px-6">
+  <a
+    href="#main-content"
+    class="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-8 focus-visible:top-5 focus-visible:z-50 focus-visible:rounded-lg focus-visible:bg-cyan-400/90 focus-visible:px-3 focus-visible:py-2 focus-visible:text-sm focus-visible:font-semibold focus-visible:text-zinc-950"
+  >
+    Skip to content
+  </a>
+
+  <div
+    class="mx-auto max-w-6xl rounded-2xl border border-cyan-300/20 bg-zinc-950/75 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur-xl"
+  >
+    <nav class="flex items-center justify-between px-4 py-3 sm:px-6" aria-label="Main">
+      <a
+        href="/"
+        class="inline-flex min-h-11 items-center text-lg font-semibold tracking-tight text-zinc-100 transition-colors duration-200 hover:text-cyan-100"
+      >
+        {SITE_TITLE}
+      </a>
+
+      <div class="hidden items-center gap-1 md:flex">
+        {
+          SITE_NAV_ITEMS.map((item) => (
+            <HeaderLink href={item.href} class="nav-link">
+              {item.label}
+            </HeaderLink>
+          ))
+        }
       </div>
-      {ENABLE_DARK_MODE && <ThemeToggle />}
+
+      <button
+        type="button"
+        data-menu-button
+        class="inline-flex min-h-11 min-w-11 items-center justify-center rounded-xl border border-zinc-700 bg-zinc-900/85 text-zinc-100 transition-colors duration-200 hover:border-cyan-300/40 hover:text-cyan-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 md:hidden"
+        aria-expanded="false"
+        aria-controls="site-mobile-menu"
+        aria-label="Toggle navigation menu"
+      >
+        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+          <path d="M4 7h16M4 12h16M4 17h16"></path>
+        </svg>
+      </button>
+    </nav>
+
+    <div id="site-mobile-menu" data-mobile-menu class="hidden border-t border-zinc-800 px-2 pb-2 pt-1 md:hidden">
+      <ul class="grid gap-1">
+        {
+          SITE_NAV_ITEMS.map((item) => (
+            <li>
+              <HeaderLink href={item.href} class="nav-link w-full justify-start">
+                {item.label}
+              </HeaderLink>
+            </li>
+          ))
+        }
+      </ul>
     </div>
-  </nav>
+  </div>
 </header>
+
+<script is:inline>
+  (() => {
+    const setupMenu = () => {
+      if (window.__siteMenuCleanup) window.__siteMenuCleanup();
+
+      const header = document.querySelector("[data-site-header]");
+      if (!header) return;
+
+      const button = header.querySelector("[data-menu-button]");
+      const menu = header.querySelector("[data-mobile-menu]");
+      if (!(button instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+
+      const closeMenu = () => {
+        menu.classList.add("hidden");
+        button.setAttribute("aria-expanded", "false");
+      };
+
+      const toggleMenu = () => {
+        const willOpen = menu.classList.contains("hidden");
+        menu.classList.toggle("hidden", !willOpen);
+        button.setAttribute("aria-expanded", willOpen ? "true" : "false");
+      };
+
+      const handleEscape = (event) => {
+        if (event.key === "Escape") closeMenu();
+      };
+
+      button.addEventListener("click", toggleMenu);
+      menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      document.addEventListener("keydown", handleEscape);
+
+      window.__siteMenuCleanup = () => {
+        button.removeEventListener("click", toggleMenu);
+        menu.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+        document.removeEventListener("keydown", handleEscape);
+      };
+    };
+
+    setupMenu();
+    document.addEventListener("astro:page-load", setupMenu);
+    document.addEventListener("astro:before-swap", () => {
+      if (window.__siteMenuCleanup) {
+        window.__siteMenuCleanup();
+        window.__siteMenuCleanup = undefined;
+      }
+    });
+  })();
+</script>

@@ -12,9 +12,11 @@ const isActive = href === pathname || href === "/" + (subpath?.[0] || "");
 <a
   href={href}
   class:list={[
-    "inline-block no-underline",
+    "inline-flex no-underline",
     className,
-    { "font-bold underline pointer-events-none": isActive },
+    {
+      "bg-cyan-400/15 text-cyan-100 ring-1 ring-inset ring-cyan-300/40": isActive,
+    },
   ]}
   aria-current={isActive ? "page" : undefined}
   {...props}

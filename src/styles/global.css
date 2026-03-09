@@ -1,67 +1,51 @@
-/*
-  The CSS in this style tag is based off of Bear Blog's default CSS.
-  https://github.com/HermanMartinus/bearblog/blob/297026a877bc2ab2b3bdfbd6b9f7961c350917dd/templates/styles/blog/default.css
-  License MIT: https://github.com/HermanMartinus/bearblog/blob/master/LICENSE.md
- */
-
 @import "tailwindcss";
 @plugin "@tailwindcss/typography";
 
-/* Tailwind 4 dark mode 配置 - 使用 class 策略 */
 @custom-variant dark (&:where(.dark, .dark *));
 
-/* 公共复合类 - 方便统一维护 */
 @utility nav-link {
-  @apply border-b-4 border-transparent px-2 py-4 text-slate-900 no-underline transition-colors hover:border-blue-600 dark:text-slate-100 dark:hover:border-blue-400;
+  @apply min-h-11 items-center justify-center rounded-xl border border-transparent px-3 py-2 text-sm font-medium tracking-wide text-zinc-300 no-underline transition-all duration-200 hover:border-cyan-300/25 hover:bg-white/5 hover:text-zinc-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300;
 }
 
 @utility social-link-header {
-  @apply flex p-2 text-slate-700 transition-colors hover:text-slate-900 dark:text-slate-300 dark:hover:text-slate-100;
+  @apply inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-300 transition-colors duration-200 hover:text-zinc-100;
 }
 
 @utility social-link-footer {
-  @apply text-slate-500 no-underline transition-colors hover:text-slate-700 dark:text-slate-400 dark:hover:text-slate-200;
+  @apply inline-flex min-h-11 min-w-11 items-center justify-center rounded-lg text-zinc-400 no-underline transition-colors duration-200 hover:bg-zinc-800/70 hover:text-zinc-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300;
 }
 
 @utility img-container {
-  @apply overflow-hidden rounded-xl shadow-lg transition-shadow duration-300 ease-out hover:shadow-xl dark:shadow-slate-900/50;
+  @apply overflow-hidden rounded-2xl border border-zinc-800/80 bg-zinc-950/50 shadow-[0_16px_48px_rgba(0,0,0,0.45)] transition-all duration-300;
 }
 
 @utility img-zoom {
-  @apply rounded-xl transition-transform duration-300 ease-out;
-}
-
-/* View Transitions 期间保持图片圆角 */
-::view-transition-old(hero-*),
-::view-transition-new(hero-*) {
-  border-radius: 0.75rem; /* rounded-xl */
-  overflow: hidden;
+  @apply rounded-2xl transition-transform duration-300 ease-out;
 }
 
 @utility text-muted {
-  @apply text-slate-500 dark:text-slate-400;
+  @apply text-zinc-400;
 }
 
 @utility text-hover-primary {
-  @apply transition-colors hover:text-blue-600 dark:hover:text-blue-400;
+  @apply transition-colors duration-200 hover:text-cyan-100;
 }
 
-html {
-  scroll-behavior: smooth;
+::view-transition-old(hero-*),
+::view-transition-new(hero-*) {
+  border-radius: 1rem;
+  overflow: hidden;
 }
 
 :root {
-  --accent: #2337ff;
-  --accent-dark: #000d8a;
-  --black: 15, 18, 25;
-  --gray: 96, 115, 159;
-  --gray-light: 229, 233, 240;
-  --gray-dark: 34, 41, 57;
-  --gray-gradient: rgba(var(--gray-light), 50%), #fff;
-  --box-shadow:
-    0 2px 6px rgba(var(--gray), 25%), 0 8px 24px rgba(var(--gray), 33%),
-    0 16px 32px rgba(var(--gray), 33%);
+  --surface-0: #05080d;
+  --surface-1: #0b121c;
+  --surface-2: #101927;
+  --line-1: rgba(103, 232, 249, 0.2);
+  --text-primary: #e4edf4;
+  --text-muted: #94a3b8;
 }
+
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-regular.woff") format("woff");
@@ -69,6 +53,7 @@ html {
   font-style: normal;
   font-display: swap;
 }
+
 @font-face {
   font-family: "Atkinson";
   src: url("/fonts/atkinson-bold.woff") format("woff");
@@ -76,68 +61,113 @@ html {
   font-style: normal;
   font-display: swap;
 }
-body {
-  font-family: "Atkinson", sans-serif;
-  margin: 0;
-  padding: 0;
-  text-align: left;
-  background: #fff;
-  background-size: 100% 600px;
-  word-wrap: break-word;
-  overflow-wrap: break-word;
-  color: rgb(var(--gray-dark));
-  font-size: 20px;
-  line-height: 1.7;
-  transition:
-    background-color 0.2s ease,
-    color 0.2s ease;
+
+html {
+  scroll-behavior: smooth;
+  background: var(--surface-0);
+  color-scheme: dark;
 }
 
-/* 深色模式 body 样式 */
-.dark body {
-  background: #0f172a;
-  color: #e2e8f0;
-}
-main {
-  width: 720px;
-  max-width: calc(100% - 2em);
-  margin: auto;
-  padding: 3em 1em;
-}
-/* Markdown 样式由 @tailwindcss/typography 插件控制 */
-textarea {
-  width: 100%;
+body {
+  margin: 0;
+  min-height: 100vh;
+  padding: 0;
+  font-family: "Atkinson", "Segoe UI", sans-serif;
   font-size: 16px;
+  line-height: 1.65;
+  text-align: left;
+  color: var(--text-primary);
+  background:
+    radial-gradient(
+      1200px 600px at 78% -8%,
+      rgba(56, 189, 248, 0.35),
+      transparent 62%
+    ),
+    radial-gradient(
+      720px 520px at 92% 18%,
+      rgba(20, 184, 166, 0.24),
+      transparent 70%
+    ),
+    linear-gradient(180deg, #05080d 0%, #060b12 42%, #06080e 100%);
+  overflow-wrap: break-word;
+  word-wrap: break-word;
+  position: relative;
 }
+
+body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  background:
+    radial-gradient(
+      420px 260px at 22% 82%,
+      rgba(16, 185, 129, 0.1),
+      transparent 75%
+    ),
+    radial-gradient(
+      540px 300px at 6% 14%,
+      rgba(6, 182, 212, 0.08),
+      transparent 80%
+    );
+  z-index: -2;
+}
+
+body::after {
+  content: "";
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  opacity: 0.32;
+  background-image:
+    linear-gradient(rgba(148, 163, 184, 0.02) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(148, 163, 184, 0.02) 1px, transparent 1px);
+  background-size: 48px 48px;
+  z-index: -1;
+}
+
+main {
+  width: 100%;
+}
+
+a {
+  color: inherit;
+}
+
+textarea,
 input {
   font-size: 16px;
 }
+
 table {
   width: 100%;
 }
-@media (max-width: 720px) {
-  body {
-    font-size: 18px;
-  }
-  main {
-    padding: 1em;
-  }
+
+::selection {
+  background: rgba(34, 211, 238, 0.28);
+  color: #f8fafc;
 }
 
 .sr-only {
   border: 0;
-  padding: 0;
-  margin: 0;
-  position: absolute !important;
-  height: 1px;
-  width: 1px;
-  overflow: hidden;
-  /* IE6, IE7 - a 0 height clip, off to the bottom right of the visible 1px box */
-  clip: rect(1px 1px 1px 1px);
-  /* maybe deprecated but we need to support legacy browsers */
   clip: rect(1px, 1px, 1px, 1px);
-  /* modern browsers, clip-path works inwards from each corner */
   clip-path: inset(50%);
-  /* added line to stop words getting smushed together (as they go onto separate lines and some screen readers do not understand line feeds as a space */
+  height: 1px;
+  margin: 0;
+  overflow: hidden;
+  padding: 0;
+  position: absolute !important;
   white-space: nowrap;
+  width: 1px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    scroll-behavior: auto !important;
+    transition-duration: 0.01ms !important;
+  }
 }

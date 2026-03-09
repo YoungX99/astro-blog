@@ -1,0 +1,43 @@
+---
+import BaseHead from "../components/BaseHead.astro";
+import Footer from "../components/Footer.astro";
+import Header from "../components/Header.astro";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <BaseHead title="photo" description="Photo gallery coming soon" />
+  </head>
+  <body>
+    <Header />
+    <main id="main-content" class="px-4 pt-8 pb-12 sm:px-6 sm:pb-16">
+      <section class="mx-auto max-w-6xl">
+        <div
+          class="overflow-hidden rounded-3xl border border-zinc-800/90 bg-zinc-950/70 p-8 shadow-[0_22px_64px_rgba(0,0,0,0.45)] backdrop-blur-xl sm:p-10"
+        >
+          <p class="m-0 text-xs tracking-[0.22em] text-cyan-200/80 uppercase">
+            photo
+          </p>
+          <h1
+            class="mt-3 text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl"
+          >
+            Photos are on the way
+          </h1>
+          <p class="mt-4 max-w-[58ch] text-zinc-300">
+            This section is reserved for recent moments, experiments, and visual
+            notes. The full photo experience will be added in the next
+            iteration.
+          </p>
+          <a
+            href="/"
+            class="mt-8 inline-flex min-h-11 items-center rounded-xl border border-cyan-300/40 bg-cyan-300/12 px-4 py-2 text-sm font-semibold text-cyan-100 no-underline transition-colors duration-200 hover:bg-cyan-300/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+          >
+            Back to home
+          </a>
+        </div>
+      </section>
+    </main>
+    <Footer />
+  </body>
+</html>

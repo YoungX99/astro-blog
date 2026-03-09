@@ -1,8 +1,25 @@
 ---
+import { getCollection } from "astro:content";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
-import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+import { HOME_PROFILE, SITE_DESCRIPTION, SITE_TITLE } from "../consts";
+
+const recentPosts = (await getCollection("blog"))
+  .sort((a, b) => b.data.pubDate.valueOf() - a.data.pubDate.valueOf())
+  .slice(0, 3);
+
+const now = new Date();
+const fallbackTime = new Intl.DateTimeFormat("en-US", {
+  hour: "2-digit",
+  minute: "2-digit",
+}).format(now);
+const fallbackDate = new Intl.DateTimeFormat("en-US", {
+  weekday: "long",
+  year: "numeric",
+  month: "long",
+  day: "numeric",
+}).format(now);
 ---
 
 <!doctype html>
@@ -12,51 +29,249 @@ import { SITE_DESCRIPTION, SITE_TITLE } from "../consts";
   </head>
   <body>
     <Header />
-    <main class="prose prose-lg prose-slate dark:prose-invert prose-a:text-blue-600 dark:prose-a:text-blue-400">
-      <h1>🧑‍🚀 Hello, Astronaut!</h1>
-      <p>
-        Welcome to the official <a href="https://astro.build/">Astro</a> blog starter
-        template. This template serves as a lightweight, minimally-styled starting
-        point for anyone looking to build a personal website, blog, or portfolio with
-        Astro.
-      </p>
-      <p>
-        This template comes with a few integrations already configured in your
-        <code>astro.config.mjs</code> file. You can customize your setup with
-        <a href="https://astro.build/integrations">Astro Integrations</a> to add tools
-        like Tailwind, React, or Vue to your project.
-      </p>
-      <p>Here are a few ideas on how to get started with the template:</p>
-      <ul>
-        <li>Edit this page in <code>src/pages/index.astro</code></li>
-        <li>
-          Edit the site header items in <code>src/components/Header.astro</code>
-        </li>
-        <li>
-          Add your name to the footer in <code
-            >src/components/Footer.astro</code>
-        </li>
-        <li>
-          Check out the included blog posts in <code>src/content/blog/</code>
-        </li>
-        <li>
-          Customize the blog post page layout in <code
-            >src/layouts/BlogPost.astro</code>
-        </li>
-      </ul>
-      <p>
-        Have fun! If you get stuck, remember to
-        <a href="https://docs.astro.build/">read the docs</a>
-        or <a href="https://astro.build/chat">join us on Discord</a> to ask questions.
-      </p>
-      <p>
-        Looking for a blog template with a bit more personality? Check out
-        <a href="https://github.com/Charca/astro-blog-template"
-          >astro-blog-template</a
+    <main id="main-content" class="px-4 pt-8 pb-12 sm:px-6 sm:pb-16">
+      <section class="mx-auto max-w-6xl">
+        <div
+          class="grid gap-6 lg:grid-cols-[minmax(300px,1fr)_minmax(0,1.45fr)]"
         >
-        by <a href="https://twitter.com/Charca">Maxi Ferreira</a>.
-      </p>
+          <aside class="relative overflow-hidden rounded-3xl p-6 sm:p-8">
+            <div class="absolute -top-16 -right-16 h-56 w-56"></div>
+            <div class="relative space-y-7">
+              <div
+                class="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/30 bg-cyan-300/18 text-lg font-semibold text-cyan-100"
+              >
+                JR
+              </div>
+              <div class="space-y-3">
+                <p
+                  class="m-0 text-sm tracking-[0.28em] text-zinc-400 uppercase"
+                >
+                  {HOME_PROFILE.greeting}
+                </p>
+                <h1
+                  class="m-0 text-4xl font-bold tracking-tight text-zinc-50 sm:text-5xl"
+                >
+                  {HOME_PROFILE.name}
+                </h1>
+                <p class="m-0 max-w-[42ch] text-zinc-300">
+                  {HOME_PROFILE.intro}
+                </p>
+              </div>
+              <div class="flex flex-wrap gap-3">
+                <a
+                  href="/blog"
+                  class="inline-flex min-h-11 items-center rounded-xl border border-cyan-300/40 bg-cyan-300/12 px-4 py-2 text-sm font-semibold text-cyan-100 transition-colors duration-200 hover:bg-cyan-300/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                >
+                  Read Blog
+                </a>
+                <a
+                  href="/about"
+                  class="inline-flex min-h-11 items-center rounded-xl border border-zinc-700 bg-zinc-900/80 px-4 py-2 text-sm font-semibold text-zinc-200 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                >
+                  About Me
+                </a>
+              </div>
+            </div>
+          </aside>
+
+          <section
+            class="grid grid-cols-2 gap-4 xl:auto-rows-[minmax(132px,auto)] xl:grid-cols-3"
+          >
+            <article
+              class="rounded-2xl border border-cyan-200/20 bg-linear-to-br from-cyan-400/26 via-cyan-500/14 to-zinc-950/90 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+            >
+              <p
+                class="m-0 text-xs tracking-[0.22em] text-cyan-100/85 uppercase"
+              >
+                {HOME_PROFILE.roleLabel}
+              </p>
+              <p class="mt-3 text-xl font-semibold text-zinc-50">
+                {HOME_PROFILE.roleValue}
+              </p>
+            </article>
+
+            <article
+              class="rounded-2xl border border-emerald-200/20 bg-linear-to-br from-emerald-300/24 via-emerald-500/12 to-zinc-950/90 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+            >
+              <p
+                class="m-0 text-xs tracking-[0.22em] text-emerald-100/90 uppercase"
+              >
+                {HOME_PROFILE.locationLabel}
+              </p>
+              <p class="mt-3 text-xl font-semibold text-zinc-50">
+                {HOME_PROFILE.locationValue}
+              </p>
+            </article>
+
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              class="group col-span-2 flex min-h-[136px] cursor-pointer flex-col justify-between rounded-2xl border border-fuchsia-300/25 bg-linear-to-r from-fuchsia-400/24 via-pink-400/18 to-orange-300/24 p-5 text-zinc-50 no-underline shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 xl:col-span-2 xl:col-start-1 xl:row-start-2"
+            >
+              <div class="flex items-center justify-between">
+                <p
+                  class="m-0 text-xs tracking-[0.22em] text-zinc-100/90 uppercase"
+                >
+                  {HOME_PROFILE.instagramLabel}
+                </p>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5 text-zinc-100/90"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+                  <circle cx="12" cy="12" r="3.7"></circle>
+                  <circle
+                    cx="17.3"
+                    cy="6.8"
+                    r="0.9"
+                    fill="currentColor"
+                    stroke="none"></circle>
+                </svg>
+              </div>
+              <p class="m-0 text-xl font-semibold">
+                {HOME_PROFILE.instagramValue}
+              </p>
+            </a>
+
+            <aside
+              class="col-span-2 rounded-2xl border border-zinc-700/80 bg-zinc-950/80 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.45)] xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
+            >
+              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
+                Recent Posts
+              </p>
+              <ul class="mt-4 flex list-none flex-col gap-2 p-0">
+                {
+                  recentPosts.map((post) => (
+                    <li>
+                      <a
+                        href={`/blog/${post.id}/`}
+                        class="flex cursor-pointer items-start justify-between gap-2 rounded-xl border border-zinc-800 bg-zinc-900/85 px-3 py-3 text-sm text-zinc-300 no-underline transition-colors duration-200 hover:border-cyan-400/40 hover:bg-zinc-900 hover:text-zinc-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                      >
+                        <span class="flex-1 font-medium">
+                          {post.data.title}
+                        </span>
+                        <span class="shrink-0 text-xs text-zinc-500">
+                          {post.data.pubDate.toLocaleDateString("en-US", {
+                            month: "short",
+                            day: "numeric",
+                          })}
+                        </span>
+                      </a>
+                    </li>
+                  ))
+                }
+              </ul>
+            </aside>
+
+            <article
+              class="rounded-2xl border border-zinc-700/70 bg-zinc-900/70 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] xl:col-start-1 xl:row-start-3"
+            >
+              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
+                Local Time
+              </p>
+              <p
+                id="home-time"
+                class="mt-3 text-3xl font-semibold text-zinc-100"
+              >
+                {fallbackTime}
+              </p>
+            </article>
+
+            <article
+              class="rounded-2xl border border-zinc-700/70 bg-zinc-900/70 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] xl:col-start-2 xl:row-start-3"
+            >
+              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
+                Current Date
+              </p>
+              <p id="home-date" class="mt-2 text-sm font-medium text-zinc-200">
+                {fallbackDate}
+              </p>
+              <div class="mt-4 border-t border-zinc-700 pt-3">
+                <p
+                  class="m-0 text-xs tracking-[0.22em] text-cyan-200/80 uppercase"
+                >
+                  {HOME_PROFILE.reminderLabel}
+                </p>
+                <p class="mt-2 text-sm text-zinc-300">
+                  {HOME_PROFILE.reminderValue}
+                </p>
+              </div>
+            </article>
+
+            <a
+              href="/photo"
+              class="group col-span-2 flex min-h-[132px] cursor-pointer flex-col justify-between rounded-2xl border border-blue-300/25 bg-linear-to-br from-blue-500/24 via-cyan-500/18 to-zinc-950/95 p-5 text-zinc-50 no-underline shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 xl:col-span-1 xl:col-start-3 xl:row-start-3"
+            >
+              <div class="flex items-center justify-between">
+                <p
+                  class="m-0 text-xs tracking-[0.22em] text-zinc-100/85 uppercase"
+                >
+                  {HOME_PROFILE.photosLabel}
+                </p>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-5 w-5 text-zinc-100/90"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <rect x="3.5" y="4.5" width="17" height="15" rx="2.2"></rect>
+                  <circle cx="9" cy="10" r="1.8"></circle>
+                  <path d="M20 15l-4.4-4.2a1.4 1.4 0 0 0-1.9 0L8 16.5"></path>
+                </svg>
+              </div>
+              <p class="m-0 text-xl font-semibold">
+                {HOME_PROFILE.photosValue}
+              </p>
+            </a>
+          </section>
+        </div>
+      </section>
     </main>
     <Footer />
   </body>
 </html>
+
+<script is:inline>
+  (() => {
+    const setupClock = () => {
+      const timeEl = document.getElementById("home-time");
+      const dateEl = document.getElementById("home-date");
+      if (!timeEl || !dateEl) return;
+
+      const updateClock = () => {
+        const now = new Date();
+        timeEl.textContent = new Intl.DateTimeFormat(undefined, {
+          hour: "2-digit",
+          minute: "2-digit",
+          second: "2-digit",
+        }).format(now);
+        dateEl.textContent = new Intl.DateTimeFormat(undefined, {
+          weekday: "long",
+          year: "numeric",
+          month: "long",
+          day: "numeric",
+        }).format(now);
+      };
+
+      updateClock();
+
+      if (window.__homeClockTimer)
+        window.clearInterval(window.__homeClockTimer);
+      window.__homeClockTimer = window.setInterval(updateClock, 1000);
+    };
+
+    setupClock();
+    document.addEventListener("astro:page-load", setupClock);
+    document.addEventListener("astro:before-swap", () => {
+      if (window.__homeClockTimer) {
+        window.clearInterval(window.__homeClockTimer);
+        window.__homeClockTimer = undefined;
+      }
+    });
+  })();
+</script>

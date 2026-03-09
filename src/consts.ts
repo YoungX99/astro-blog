@@ -4,6 +4,28 @@
 export const SITE_TITLE = "Astro Blog";
 export const SITE_DESCRIPTION = "Welcome to my website!";
 
-// 深色模式配置
-// 设为 true 启用深色模式切换功能，设为 false 则全局锁定为浅色主题
-export const ENABLE_DARK_MODE = false;
+export const FORCE_DARK_MODE = true;
+
+export const SITE_NAV_ITEMS = [
+  { href: "/", label: "home" },
+  { href: "/blog", label: "blog" },
+  { href: "/photo", label: "photo" },
+  { href: "/about", label: "about" },
+] as const;
+
+export const HOME_PROFILE = {
+  greeting: "Hello",
+  name: "Jason Rosser",
+  intro:
+    "Crafting calm and fast digital products. This is my personal home base for writing, building, and sharing.",
+  roleLabel: "Role",
+  roleValue: "Product Engineer",
+  locationLabel: "Based In",
+  locationValue: "Shanghai, China",
+  instagramLabel: "Instagram",
+  instagramValue: "@handle_or_address",
+  reminderLabel: "Reminder",
+  reminderValue: "Draft one idea and publish one paragraph today.",
+  photosLabel: "Photos",
+  photosValue: "Open recent shots",
+} as const;
