@@ -31,6 +31,10 @@
   @apply transition-colors duration-200 hover:text-cyan-100;
 }
 
+@utility element-container {
+  @apply mx-auto max-w-7xl px-4 sm:px-0;
+}
+
 ::view-transition-old(hero-*),
 ::view-transition-new(hero-*) {
   border-radius: 1rem;

@@ -29,14 +29,13 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
   </head>
   <body>
     <Header />
-    <main id="main-content" class="px-4 pt-8 pb-12 sm:px-6 sm:pb-16">
-      <section class="mx-auto max-w-6xl">
+    <main id="main-content" class="element-container pt-8 pb-12 sm:pb-16">
+      <section class="mx-auto">
         <div
           class="grid gap-6 lg:grid-cols-[minmax(300px,1fr)_minmax(0,1.45fr)]"
         >
-          <aside class="relative overflow-hidden rounded-3xl p-6 sm:p-8">
-            <div class="absolute -top-16 -right-16 h-56 w-56"></div>
-            <div class="relative space-y-7">
+          <aside class="flex flex-col justify-center">
+            <div class="space-y-7">
               <div
                 class="inline-flex h-14 w-14 items-center justify-center rounded-full border border-cyan-200/30 bg-cyan-300/18 text-lg font-semibold text-cyan-100"
               >

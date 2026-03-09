@@ -3,18 +3,16 @@ import { SITE_NAV_ITEMS, SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
 
-<header data-site-header class="relative z-50 px-4 pt-4 sm:px-6">
+<header data-site-header class="relative z-50">
   <a
     href="#main-content"
-    class="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:left-8 focus-visible:top-5 focus-visible:z-50 focus-visible:rounded-lg focus-visible:bg-cyan-400/90 focus-visible:px-3 focus-visible:py-2 focus-visible:text-sm focus-visible:font-semibold focus-visible:text-zinc-950"
+    class="sr-only focus-visible:not-sr-only focus-visible:absolute focus-visible:top-5 focus-visible:left-8 focus-visible:z-50 focus-visible:rounded-lg focus-visible:bg-cyan-400/90 focus-visible:px-3 focus-visible:py-2 focus-visible:text-sm focus-visible:font-semibold focus-visible:text-zinc-950"
   >
     Skip to content
   </a>
 
-  <div
-    class="mx-auto max-w-6xl rounded-2xl border border-cyan-300/20 bg-zinc-950/75 shadow-[0_18px_55px_rgba(0,0,0,0.45)] backdrop-blur-xl"
-  >
-    <nav class="flex items-center justify-between px-4 py-3 sm:px-6" aria-label="Main">
+  <div class="element-container">
+    <nav class="flex items-center justify-between py-3" aria-label="Main">
       <a
         href="/"
         class="inline-flex min-h-11 items-center text-lg font-semibold tracking-tight text-zinc-100 transition-colors duration-200 hover:text-cyan-100"
@@ -40,18 +38,31 @@ import HeaderLink from "./HeaderLink.astro";
         aria-controls="site-mobile-menu"
         aria-label="Toggle navigation menu"
       >
-        <svg viewBox="0 0 24 24" class="h-5 w-5" fill="none" stroke="currentColor" stroke-width="2">
+        <svg
+          viewBox="0 0 24 24"
+          class="h-5 w-5"
+          fill="none"
+          stroke="currentColor"
+          stroke-width="2"
+        >
           <path d="M4 7h16M4 12h16M4 17h16"></path>
         </svg>
       </button>
     </nav>
 
-    <div id="site-mobile-menu" data-mobile-menu class="hidden border-t border-zinc-800 px-2 pb-2 pt-1 md:hidden">
+    <div
+      id="site-mobile-menu"
+      data-mobile-menu
+      class="hidden border-t border-zinc-800 px-2 pt-1 pb-2 md:hidden"
+    >
       <ul class="grid gap-1">
         {
           SITE_NAV_ITEMS.map((item) => (
             <li>
-              <HeaderLink href={item.href} class="nav-link w-full justify-start">
+              <HeaderLink
+                href={item.href}
+                class="nav-link w-full justify-start"
+              >
                 {item.label}
               </HeaderLink>
             </li>
@@ -72,7 +83,11 @@ import HeaderLink from "./HeaderLink.astro";
 
       const button = header.querySelector("[data-menu-button]");
       const menu = header.querySelector("[data-mobile-menu]");
-      if (!(button instanceof HTMLButtonElement) || !(menu instanceof HTMLElement)) return;
+      if (
+        !(button instanceof HTMLButtonElement) ||
+        !(menu instanceof HTMLElement)
+      )
+        return;
 
       const closeMenu = () => {
         menu.classList.add("hidden");
@@ -90,12 +105,16 @@ import HeaderLink from "./HeaderLink.astro";
       };
 
       button.addEventListener("click", toggleMenu);
-      menu.querySelectorAll("a").forEach((link) => link.addEventListener("click", closeMenu));
+      menu
+        .querySelectorAll("a")
+        .forEach((link) => link.addEventListener("click", closeMenu));
       document.addEventListener("keydown", handleEscape);
 
       window.__siteMenuCleanup = () => {
         button.removeEventListener("click", toggleMenu);
-        menu.querySelectorAll("a").forEach((link) => link.removeEventListener("click", closeMenu));
+        menu
+          .querySelectorAll("a")
+          .forEach((link) => link.removeEventListener("click", closeMenu));
         document.removeEventListener("keydown", handleEscape);
       };
     };
