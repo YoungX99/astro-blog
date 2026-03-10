@@ -35,6 +35,35 @@
   @apply mx-auto max-w-7xl px-4 sm:px-0;
 }
 
+/* ── Apple-style Widget Design Tokens ── */
+
+@utility widget {
+  @apply rounded-[20px] p-5 transition-all duration-200;
+  box-shadow:
+    0 2px 8px rgba(0, 0, 0, 0.3),
+    inset 0 0.5px 0 rgba(255, 255, 255, 0.06);
+}
+
+@utility widget-glass {
+  @apply widget border border-white/[0.08] bg-white/[0.06] backdrop-blur-xl;
+}
+
+@utility widget-interactive {
+  @apply cursor-pointer hover:-translate-y-0.5 hover:shadow-[0_8px_24px_rgba(0,0,0,0.4)] focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300;
+}
+
+@utility widget-label {
+  @apply m-0 text-[11px] font-medium tracking-[0.04em] text-white/60 uppercase;
+}
+
+@utility widget-value {
+  @apply m-0 text-xl font-semibold tracking-tight text-white;
+}
+
+@utility widget-icon {
+  @apply flex h-9 w-9 items-center justify-center rounded-[10px];
+}
+
 ::view-transition-old(hero-*),
 ::view-transition-new(hero-*) {
   border-radius: 1rem;
@@ -75,6 +104,8 @@ html {
 body {
   margin: 0;
   min-height: 100vh;
+  display: flex;
+  flex-direction: column;
   padding: 0;
   font-family: "Atkinson", "Segoe UI", sans-serif;
   font-size: 16px;
@@ -132,6 +163,7 @@ body::after {
 
 main {
   width: 100%;
+  flex: 1;
 }
 
 a {

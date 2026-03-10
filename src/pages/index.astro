@@ -29,7 +29,10 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
   </head>
   <body>
     <Header />
-    <main id="main-content" class="element-container pt-8 pb-12 sm:pb-16">
+    <main
+      id="main-content"
+      class="element-container flex items-center justify-center"
+    >
       <section class="mx-auto">
         <div
           class="grid gap-6 lg:grid-cols-[minmax(300px,1fr)_minmax(0,1.45fr)]"
@@ -74,91 +77,140 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
           </aside>
 
           <section
-            class="grid grid-cols-2 gap-4 xl:auto-rows-[minmax(132px,auto)] xl:grid-cols-3"
+            class="grid grid-cols-2 gap-3.5 xl:auto-rows-[minmax(128px,auto)] xl:grid-cols-3"
           >
+            <!-- Role -->
             <article
-              class="rounded-2xl border border-cyan-200/20 bg-linear-to-br from-cyan-400/26 via-cyan-500/14 to-zinc-950/90 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
+              class="widget flex flex-col justify-between border border-cyan-400/[0.12] bg-gradient-to-br from-cyan-500/20 via-cyan-600/10 to-transparent"
             >
-              <p
-                class="m-0 text-xs tracking-[0.22em] text-cyan-100/85 uppercase"
-              >
-                {HOME_PROFILE.roleLabel}
-              </p>
-              <p class="mt-3 text-xl font-semibold text-zinc-50">
-                {HOME_PROFILE.roleValue}
-              </p>
-            </article>
-
-            <article
-              class="rounded-2xl border border-emerald-200/20 bg-linear-to-br from-emerald-300/24 via-emerald-500/12 to-zinc-950/90 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.4)]"
-            >
-              <p
-                class="m-0 text-xs tracking-[0.22em] text-emerald-100/90 uppercase"
-              >
-                {HOME_PROFILE.locationLabel}
-              </p>
-              <p class="mt-3 text-xl font-semibold text-zinc-50">
-                {HOME_PROFILE.locationValue}
-              </p>
-            </article>
-
-            <a
-              href="https://instagram.com/"
-              target="_blank"
-              rel="noreferrer"
-              class="group col-span-2 flex min-h-[136px] cursor-pointer flex-col justify-between rounded-2xl border border-fuchsia-300/25 bg-linear-to-r from-fuchsia-400/24 via-pink-400/18 to-orange-300/24 p-5 text-zinc-50 no-underline shadow-[0_10px_30px_rgba(0,0,0,0.4)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 xl:col-span-2 xl:col-start-1 xl:row-start-2"
-            >
-              <div class="flex items-center justify-between">
-                <p
-                  class="m-0 text-xs tracking-[0.22em] text-zinc-100/90 uppercase"
-                >
-                  {HOME_PROFILE.instagramLabel}
-                </p>
+              <div class="widget-icon bg-cyan-400/15">
                 <svg
                   viewBox="0 0 24 24"
-                  class="h-5 w-5 text-zinc-100/90"
+                  class="h-4.5 w-4.5 text-cyan-300"
                   fill="none"
                   stroke="currentColor"
                   stroke-width="1.8"
                 >
-                  <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
-                  <circle cx="12" cy="12" r="3.7"></circle>
-                  <circle
-                    cx="17.3"
-                    cy="6.8"
-                    r="0.9"
-                    fill="currentColor"
-                    stroke="none"></circle>
+                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
+                  <circle cx="12" cy="7" r="4"></circle>
                 </svg>
               </div>
-              <p class="m-0 text-xl font-semibold">
-                {HOME_PROFILE.instagramValue}
-              </p>
+              <div>
+                <p class="widget-label">{HOME_PROFILE.roleLabel}</p>
+                <p class="widget-value mt-1">{HOME_PROFILE.roleValue}</p>
+              </div>
+            </article>
+
+            <!-- Location -->
+            <article
+              class="widget flex flex-col justify-between border border-emerald-400/[0.12] bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-transparent"
+            >
+              <div class="widget-icon bg-emerald-400/15">
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4.5 w-4.5 text-emerald-300"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="1.8"
+                >
+                  <path
+                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
+                  ></path>
+                  <circle cx="12" cy="9" r="2.5"></circle>
+                </svg>
+              </div>
+              <div>
+                <p class="widget-label">{HOME_PROFILE.locationLabel}</p>
+                <p class="widget-value mt-1">{HOME_PROFILE.locationValue}</p>
+              </div>
+            </article>
+
+            <!-- Instagram -->
+            <a
+              href="https://instagram.com/"
+              target="_blank"
+              rel="noreferrer"
+              class="widget widget-interactive group col-span-2 flex min-h-[128px] flex-col justify-between border border-fuchsia-400/[0.15] bg-gradient-to-r from-fuchsia-500/22 via-pink-500/16 to-orange-400/18 text-white no-underline xl:col-span-2 xl:col-start-1 xl:row-start-2"
+            >
+              <div class="flex items-center justify-between">
+                <div class="widget-icon bg-white/10">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-4.5 w-4.5 text-white/90"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
+                    <circle cx="12" cy="12" r="3.7"></circle>
+                    <circle
+                      cx="17.3"
+                      cy="6.8"
+                      r="0.9"
+                      fill="currentColor"
+                      stroke="none"></circle>
+                  </svg>
+                </div>
+                <svg
+                  viewBox="0 0 24 24"
+                  class="h-4 w-4 text-white/40 transition-transform duration-200 group-hover:translate-x-0.5"
+                  fill="none"
+                  stroke="currentColor"
+                  stroke-width="2"
+                >
+                  <path d="M7 17l9.2-9.2M17 17V7H7"></path>
+                </svg>
+              </div>
+              <div>
+                <p class="widget-label">{HOME_PROFILE.instagramLabel}</p>
+                <p class="widget-value mt-1">{HOME_PROFILE.instagramValue}</p>
+              </div>
             </a>
 
+            <!-- Recent Posts -->
             <aside
-              class="col-span-2 rounded-2xl border border-zinc-700/80 bg-zinc-950/80 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.45)] xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
+              class="widget-glass col-span-2 flex flex-col xl:col-span-1 xl:col-start-3 xl:row-span-2 xl:row-start-1"
             >
-              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
-                Recent Posts
-              </p>
-              <ul class="mt-4 flex list-none flex-col gap-2 p-0">
+              <p class="widget-label">{`Recent Posts`}</p>
+              <ul class="mt-3.5 flex flex-1 list-none flex-col gap-1.5 p-0">
                 {
                   recentPosts.map((post) => (
                     <li>
                       <a
                         href={`/blog/${post.id}/`}
-                        class="flex cursor-pointer items-start justify-between gap-2 rounded-xl border border-zinc-800 bg-zinc-900/85 px-3 py-3 text-sm text-zinc-300 no-underline transition-colors duration-200 hover:border-cyan-400/40 hover:bg-zinc-900 hover:text-zinc-100 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                        class="flex cursor-pointer items-center gap-3 rounded-[12px] bg-white/[0.04] px-3 py-2.5 text-sm text-white/70 no-underline transition-all duration-200 hover:bg-white/[0.08] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                       >
-                        <span class="flex-1 font-medium">
-                          {post.data.title}
+                        <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.06]">
+                          <svg
+                            viewBox="0 0 24 24"
+                            class="h-3.5 w-3.5 text-white/50"
+                            fill="none"
+                            stroke="currentColor"
+                            stroke-width="2"
+                          >
+                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
+                          </svg>
                         </span>
-                        <span class="shrink-0 text-xs text-zinc-500">
-                          {post.data.pubDate.toLocaleDateString("en-US", {
-                            month: "short",
-                            day: "numeric",
-                          })}
+                        <span class="flex flex-1 flex-col gap-0.5 overflow-hidden">
+                          <span class="truncate text-[13px] leading-tight font-medium text-white/90">
+                            {post.data.title}
+                          </span>
+                          <span class="text-[11px] text-white/40">
+                            {post.data.pubDate.toLocaleDateString("en-US", {
+                              month: "short",
+                              day: "numeric",
+                            })}
+                          </span>
                         </span>
+                        <svg
+                          viewBox="0 0 24 24"
+                          class="h-3.5 w-3.5 shrink-0 text-white/25"
+                          fill="none"
+                          stroke="currentColor"
+                          stroke-width="2.5"
+                        >
+                          <path d="M9 18l6-6-6-6" />
+                        </svg>
                       </a>
                     </li>
                   ))
@@ -166,66 +218,74 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
               </ul>
             </aside>
 
+            <!-- Local Time -->
             <article
-              class="rounded-2xl border border-zinc-700/70 bg-zinc-900/70 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] xl:col-start-1 xl:row-start-3"
+              class="widget-glass flex flex-col justify-between xl:col-start-1 xl:row-start-3"
             >
-              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
-                Local Time
-              </p>
+              <p class="widget-label">Local Time</p>
               <p
                 id="home-time"
-                class="mt-3 text-3xl font-semibold text-zinc-100"
+                class="m-0 mt-2 text-[32px] leading-none font-semibold tracking-tight text-white tabular-nums"
               >
                 {fallbackTime}
               </p>
             </article>
 
+            <!-- Date + Reminder -->
             <article
-              class="rounded-2xl border border-zinc-700/70 bg-zinc-900/70 p-5 shadow-[0_10px_30px_rgba(0,0,0,0.35)] xl:col-start-2 xl:row-start-3"
+              class="widget-glass flex flex-col xl:col-start-2 xl:row-start-3"
             >
-              <p class="m-0 text-xs tracking-[0.22em] text-zinc-400 uppercase">
-                Current Date
-              </p>
-              <p id="home-date" class="mt-2 text-sm font-medium text-zinc-200">
+              <p class="widget-label">Current Date</p>
+              <p
+                id="home-date"
+                class="m-0 mt-1.5 text-sm leading-snug font-medium text-white/80"
+              >
                 {fallbackDate}
               </p>
-              <div class="mt-4 border-t border-zinc-700 pt-3">
-                <p
-                  class="m-0 text-xs tracking-[0.22em] text-cyan-200/80 uppercase"
-                >
+              <div class="mt-auto border-t border-white/[0.06] pt-3">
+                <p class="widget-label text-cyan-300/70">
                   {HOME_PROFILE.reminderLabel}
                 </p>
-                <p class="mt-2 text-sm text-zinc-300">
+                <p class="m-0 mt-1 text-[13px] leading-snug text-white/60">
                   {HOME_PROFILE.reminderValue}
                 </p>
               </div>
             </article>
 
+            <!-- Photos -->
             <a
               href="/photo"
-              class="group col-span-2 flex min-h-[132px] cursor-pointer flex-col justify-between rounded-2xl border border-blue-300/25 bg-linear-to-br from-blue-500/24 via-cyan-500/18 to-zinc-950/95 p-5 text-zinc-50 no-underline shadow-[0_10px_30px_rgba(0,0,0,0.45)] transition-transform duration-200 hover:-translate-y-0.5 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300 xl:col-span-1 xl:col-start-3 xl:row-start-3"
+              class="widget widget-interactive group col-span-2 flex min-h-[128px] flex-col justify-between border border-blue-400/[0.15] bg-gradient-to-br from-blue-500/22 via-cyan-500/14 to-transparent text-white no-underline xl:col-span-1 xl:col-start-3 xl:row-start-3"
             >
               <div class="flex items-center justify-between">
-                <p
-                  class="m-0 text-xs tracking-[0.22em] text-zinc-100/85 uppercase"
-                >
-                  {HOME_PROFILE.photosLabel}
-                </p>
+                <div class="widget-icon bg-blue-400/15">
+                  <svg
+                    viewBox="0 0 24 24"
+                    class="h-4.5 w-4.5 text-blue-300"
+                    fill="none"
+                    stroke="currentColor"
+                    stroke-width="1.8"
+                  >
+                    <rect x="3.5" y="4.5" width="17" height="15" rx="2.2"
+                    ></rect>
+                    <circle cx="9" cy="10" r="1.8"></circle>
+                    <path d="M20 15l-4.4-4.2a1.4 1.4 0 0 0-1.9 0L8 16.5"></path>
+                  </svg>
+                </div>
                 <svg
                   viewBox="0 0 24 24"
-                  class="h-5 w-5 text-zinc-100/90"
+                  class="h-4 w-4 text-white/40 transition-transform duration-200 group-hover:translate-x-0.5"
                   fill="none"
                   stroke="currentColor"
-                  stroke-width="1.8"
+                  stroke-width="2"
                 >
-                  <rect x="3.5" y="4.5" width="17" height="15" rx="2.2"></rect>
-                  <circle cx="9" cy="10" r="1.8"></circle>
-                  <path d="M20 15l-4.4-4.2a1.4 1.4 0 0 0-1.9 0L8 16.5"></path>
+                  <path d="M7 17l9.2-9.2M17 17V7H7"></path>
                 </svg>
               </div>
-              <p class="m-0 text-xl font-semibold">
-                {HOME_PROFILE.photosValue}
-              </p>
+              <div>
+                <p class="widget-label">{HOME_PROFILE.photosLabel}</p>
+                <p class="widget-value mt-1">{HOME_PROFILE.photosValue}</p>
+              </div>
             </a>
           </section>
         </div>
