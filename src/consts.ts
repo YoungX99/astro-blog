@@ -1,8 +1,8 @@
 // Place any global data in this file.
 // You can import this data from anywhere in your site by using the `import` keyword.
 
-export const SITE_TITLE = "Astro Blog";
-export const SITE_DESCRIPTION = "Welcome to my website!";
+export const SITE_TITLE = "Digital Garden";
+export const SITE_DESCRIPTION = "Welcome to my digital garden!";
 
 export const FORCE_DARK_MODE = true;
 
@@ -15,17 +15,17 @@ export const SITE_NAV_ITEMS = [
 
 export const HOME_PROFILE = {
   greeting: "Hello",
-  name: "Jason Rosser",
+  name: "Jason Young",
   intro:
     "Crafting calm and fast digital products. This is my personal home base for writing, building, and sharing.",
   roleLabel: "Role",
-  roleValue: "Product Engineer",
+  roleValue: "Frontend Engineer",
   locationLabel: "Based In",
   locationValue: "Shanghai, China",
   instagramLabel: "Instagram",
   instagramValue: "@handle_or_address",
   reminderLabel: "Reminder",
-  reminderValue: "Draft one idea and publish one paragraph today.",
+  reminderValue: "Stay hungry, stay foolish.",
   photosLabel: "Photos",
   photosValue: "Open recent shots",
 } as const;
