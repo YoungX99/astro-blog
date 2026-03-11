@@ -1,5 +1,6 @@
 ---
 import { getCollection } from "astro:content";
+import { Icon } from "astro-icon/components";
 import BaseHead from "../components/BaseHead.astro";
 import Footer from "../components/Footer.astro";
 import Header from "../components/Header.astro";
@@ -57,13 +58,13 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
               <div class="flex flex-wrap gap-3">
                 <a
                   href="/blog"
-                  class="inline-flex min-h-11 items-center rounded-xl border border-cyan-300/40 bg-cyan-300/12 px-4 py-2 text-sm font-semibold text-cyan-100 transition-colors duration-200 hover:bg-cyan-300/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                  class="inline-flex min-h-11 items-center rounded-xl border border-cyan-300/40 bg-cyan-300/12 px-4 text-sm font-semibold text-cyan-100 transition-colors duration-200 hover:bg-cyan-300/22 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                 >
                   Read Blog
                 </a>
                 <a
                   href="/about"
-                  class="inline-flex min-h-11 items-center rounded-xl border border-zinc-700 bg-zinc-900/80 px-4 py-2 text-sm font-semibold text-zinc-200 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
+                  class="inline-flex min-h-11 items-center rounded-xl border border-zinc-700 bg-zinc-900/80 px-4 text-sm font-semibold text-zinc-200 transition-colors duration-200 hover:border-zinc-500 hover:bg-zinc-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                 >
                   About Me
                 </a>
@@ -79,16 +80,7 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
               class="widget flex flex-col justify-between border border-cyan-400/[0.12] bg-gradient-to-br from-cyan-500/20 via-cyan-600/10 to-transparent"
             >
               <div class="widget-icon bg-cyan-400/15">
-                <svg
-                  viewBox="0 0 24 24"
-                  class="h-4.5 w-4.5 text-cyan-300"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path>
-                  <circle cx="12" cy="7" r="4"></circle>
-                </svg>
+                <Icon name="lucide:user" class="h-4.5 w-4.5 text-cyan-300" />
               </div>
               <div>
                 <p class="widget-label">{HOME_PROFILE.roleLabel}</p>
@@ -101,18 +93,10 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
               class="widget flex flex-col justify-between border border-emerald-400/[0.12] bg-gradient-to-br from-emerald-500/20 via-emerald-600/10 to-transparent"
             >
               <div class="widget-icon bg-emerald-400/15">
-                <svg
-                  viewBox="0 0 24 24"
+                <Icon
+                  name="lucide:map-pin"
                   class="h-4.5 w-4.5 text-emerald-300"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="1.8"
-                >
-                  <path
-                    d="M12 2C8.13 2 5 5.13 5 9c0 5.25 7 13 7 13s7-7.75 7-13c0-3.87-3.13-7-7-7z"
-                  ></path>
-                  <circle cx="12" cy="9" r="2.5"></circle>
-                </svg>
+                />
               </div>
               <div>
                 <p class="widget-label">{HOME_PROFILE.locationLabel}</p>
@@ -129,32 +113,15 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
             >
               <div class="flex items-center justify-between">
                 <div class="widget-icon bg-white/10">
-                  <svg
-                    viewBox="0 0 24 24"
+                  <Icon
+                    name="simple-icons:instagram"
                     class="h-4.5 w-4.5 text-white/90"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <rect x="3.5" y="3.5" width="17" height="17" rx="5"></rect>
-                    <circle cx="12" cy="12" r="3.7"></circle>
-                    <circle
-                      cx="17.3"
-                      cy="6.8"
-                      r="0.9"
-                      fill="currentColor"
-                      stroke="none"></circle>
-                  </svg>
+                  />
                 </div>
-                <svg
-                  viewBox="0 0 24 24"
+                <Icon
+                  name="lucide:arrow-up-right"
                   class="h-4 w-4 text-white/40 transition-transform duration-200 group-hover:translate-x-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M7 17l9.2-9.2M17 17V7H7"></path>
-                </svg>
+                />
               </div>
               <div>
                 <p class="widget-label">{HOME_PROFILE.instagramLabel}</p>
@@ -176,15 +143,10 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
                         class="flex cursor-pointer items-center gap-3 rounded-[12px] bg-white/[0.04] px-3 py-2.5 text-sm text-white/70 no-underline transition-all duration-200 hover:bg-white/[0.08] hover:text-white focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-cyan-300"
                       >
                         <span class="flex h-8 w-8 shrink-0 items-center justify-center rounded-lg bg-white/[0.06]">
-                          <svg
-                            viewBox="0 0 24 24"
+                          <Icon
+                            name="lucide:book-open"
                             class="h-3.5 w-3.5 text-white/50"
-                            fill="none"
-                            stroke="currentColor"
-                            stroke-width="2"
-                          >
-                            <path d="M4 19.5v-15A2.5 2.5 0 0 1 6.5 2H20v20H6.5a2.5 2.5 0 0 1 0-5H20" />
-                          </svg>
+                          />
                         </span>
                         <span class="flex flex-1 flex-col gap-0.5 overflow-hidden">
                           <span class="truncate text-[13px] leading-tight font-medium text-white/90">
@@ -197,15 +159,10 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
                             })}
                           </span>
                         </span>
-                        <svg
-                          viewBox="0 0 24 24"
+                        <Icon
+                          name="lucide:chevron-right"
                           class="h-3.5 w-3.5 shrink-0 text-white/25"
-                          fill="none"
-                          stroke="currentColor"
-                          stroke-width="2.5"
-                        >
-                          <path d="M9 18l6-6-6-6" />
-                        </svg>
+                        />
                       </a>
                     </li>
                   ))
@@ -254,28 +211,12 @@ const fallbackDate = new Intl.DateTimeFormat("en-US", {
             >
               <div class="flex items-center justify-between">
                 <div class="widget-icon bg-blue-400/15">
-                  <svg
-                    viewBox="0 0 24 24"
-                    class="h-4.5 w-4.5 text-blue-300"
-                    fill="none"
-                    stroke="currentColor"
-                    stroke-width="1.8"
-                  >
-                    <rect x="3.5" y="4.5" width="17" height="15" rx="2.2"
-                    ></rect>
-                    <circle cx="9" cy="10" r="1.8"></circle>
-                    <path d="M20 15l-4.4-4.2a1.4 1.4 0 0 0-1.9 0L8 16.5"></path>
-                  </svg>
+                  <Icon name="lucide:image" class="h-4.5 w-4.5 text-blue-300" />
                 </div>
-                <svg
-                  viewBox="0 0 24 24"
+                <Icon
+                  name="lucide:arrow-up-right"
                   class="h-4 w-4 text-white/40 transition-transform duration-200 group-hover:translate-x-0.5"
-                  fill="none"
-                  stroke="currentColor"
-                  stroke-width="2"
-                >
-                  <path d="M7 17l9.2-9.2M17 17V7H7"></path>
-                </svg>
+                />
               </div>
               <div>
                 <p class="widget-label">{HOME_PROFILE.photosLabel}</p>

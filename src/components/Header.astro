@@ -1,4 +1,5 @@
 ---
+import { Icon } from "astro-icon/components";
 import { SITE_NAV_ITEMS, SITE_TITLE } from "../consts";
 import HeaderLink from "./HeaderLink.astro";
 ---
@@ -38,15 +39,7 @@ import HeaderLink from "./HeaderLink.astro";
         aria-controls="site-mobile-menu"
         aria-label="Toggle navigation menu"
       >
-        <svg
-          viewBox="0 0 24 24"
-          class="h-5 w-5"
-          fill="none"
-          stroke="currentColor"
-          stroke-width="2"
-        >
-          <path d="M4 7h16M4 12h16M4 17h16"></path>
-        </svg>
+        <Icon name="lucide:menu" class="h-5 w-5" />
       </button>
     </nav>
 
